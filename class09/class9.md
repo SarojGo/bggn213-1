@@ -11,7 +11,7 @@ output:
 
 # Unsupervised Learning Analysis of Cancer Cells
 
-Lets read our input data 
+Lets read our input data please
 
 
 ```r
@@ -361,7 +361,7 @@ table(wisc.km$cluster)
 ```
 ## 
 ##   1   2 
-## 189 380
+## 380 189
 ```
 
 Compare to expert `diagnosis`
@@ -374,8 +374,8 @@ table(wisc.km$cluster, diagnosis)
 ```
 ##    diagnosis
 ##       0   1
-##   1  14 175
-##   2 343  37
+##   1 343  37
+##   2  14 175
 ```
 
 

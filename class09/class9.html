@@ -134,7 +134,7 @@ $(document).ready(function () {
 
 <div id="unsupervised-learning-analysis-of-cancer-cells" class="section level1">
 <h1>Unsupervised Learning Analysis of Cancer Cells</h1>
-<p>Lets read our input data</p>
+<p>Lets read our input data please</p>
 <pre class="r"><code>url &lt;- &quot;https://bioboot.github.io/bggn213_S18/class-material/WisconsinCancer.csv&quot;
 
 # Complete the following code to input the data and store as wisc.df
@@ -334,13 +334,13 @@ wisc.km &lt;- kmeans(data.scaled, centers=2, nstart=20)</code></pre>
 <pre class="r"><code>table(wisc.km$cluster)</code></pre>
 <pre><code>## 
 ##   1   2 
-## 189 380</code></pre>
+## 380 189</code></pre>
 <p>Compare to expert <code>diagnosis</code></p>
 <pre class="r"><code>table(wisc.km$cluster, diagnosis)</code></pre>
 <pre><code>##    diagnosis
 ##       0   1
-##   1  14 175
-##   2 343  37</code></pre>
+##   1 343  37
+##   2  14 175</code></pre>
 </div>
 </div>
 <div id="clustering-on-pca-results" class="section level1">

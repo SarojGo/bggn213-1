@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Unsupervised Learning Analysis of Cancer Cells
 
-Lets read our input data 
+Lets read our input data please
 
 ```{r}
 url <- "https://bioboot.github.io/bggn213_S18/class-material/WisconsinCancer.csv"
