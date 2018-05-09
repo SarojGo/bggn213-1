@@ -137,6 +137,161 @@ percent</code></pre>
 ##               Other        Multi Method 
 ##          0.16986775          0.08778879</code></pre>
 </div>
+<div id="using-bio3d" class="section level2">
+<h2>Using Bio3D</h2>
+<p>Load the bio3d package…</p>
+<pre class="r"><code>library(bio3d)</code></pre>
+<p>Read in our HIV-Pr structure</p>
+<pre class="r"><code>pdb &lt;- read.pdb(&quot;1hsg&quot;)</code></pre>
+<pre><code>##   Note: Accessing on-line PDB file</code></pre>
+<pre class="r"><code>pdb</code></pre>
+<pre><code>## 
+##  Call:  read.pdb(file = &quot;1hsg&quot;)
+## 
+##    Total Models#: 1
+##      Total Atoms#: 1686,  XYZs#: 5058  Chains#: 2  (values: A B)
+## 
+##      Protein Atoms#: 1514  (residues/Calpha atoms#: 198)
+##      Nucleic acid Atoms#: 0  (residues/phosphate atoms#: 0)
+## 
+##      Non-protein/nucleic Atoms#: 172  (residues: 128)
+##      Non-protein/nucleic resid values: [ HOH (127), MK1 (1) ]
+## 
+##    Protein sequence:
+##       PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYD
+##       QILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNFPQITLWQRPLVTIKIGGQLKE
+##       ALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTP
+##       VNIIGRNLLTQIGCTLNF
+## 
+## + attr: atom, xyz, seqres, helix, sheet,
+##         calpha, remark, call</code></pre>
+<blockquote>
+<p><strong>Q8.</strong> Use the Bio3D function to write out a protein only PDB file for viewing in VMD. Also write out a second separate PDB file for the ligand with residue name MK1</p>
+</blockquote>
+<pre class="r"><code>inds.ligand &lt;- atom.select(pdb, &quot;ligand&quot;)
+inds.protein &lt;- atom.select(pdb, &quot;protein&quot;)
+inds.protein</code></pre>
+<pre><code>## 
+##  Call:  atom.select.pdb(pdb = pdb, string = &quot;protein&quot;)
+## 
+##    Atom Indices#: 1514  ($atom)
+##    XYZ  Indices#: 4542  ($xyz)
+## 
+## + attr: atom, xyz, call</code></pre>
+<p>Check we have what we want</p>
+<pre class="r"><code>pdb$atom[inds.ligand$atom,]</code></pre>
+<pre><code>##        type eleno elety  alt resid chain resno insert      x      y      z
+## 1515 HETATM  1517    N1 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  9.280 23.763  3.004
+## 1516 HETATM  1518    C1 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  9.498 23.983  4.459
+## 1517 HETATM  1519    C2 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.591 24.905  4.962
+## 1518 HETATM  1520    C3 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.591 24.864  6.466
+## 1519 HETATM  1521    O1 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.937 23.849  7.057
+## 1520 HETATM  1522    N2 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.193 25.953  7.094
+## 1521 HETATM  1523    C4 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.145 26.250  8.490
+## 1522 HETATM  1524    C5 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  9.379 27.577  8.641
+## 1523 HETATM  1525    C6 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 11.398 26.347  9.074
+## 1524 HETATM  1526    C7 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  9.364 25.283  9.268
+## 1525 HETATM  1527    N3 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 11.819 24.282  4.355
+## 1526 HETATM  1528    C8 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 11.753 23.776  2.961
+## 1527 HETATM  1529    C9 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 10.440 23.182  2.493
+## 1528 HETATM  1530   C10 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 13.083 24.963  4.552
+## 1529 HETATM  1531   C11 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 14.203 24.064  5.078
+## 1530 HETATM  1532    O2 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.242 24.884  4.634
+## 1531 HETATM  1533   C12 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 14.440 23.761  6.569
+## 1532 HETATM  1534   C13 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.573 22.821  7.005
+## 1533 HETATM  1535   C14 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.644 22.664  8.534
+## 1534 HETATM  1536   C15 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.733 21.750  8.961
+## 1535 HETATM  1537   C16 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 18.058 21.916  8.553
+## 1536 HETATM  1538   C17 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 19.037 21.016  8.947
+## 1537 HETATM  1539   C18 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 18.673 19.939  9.758
+## 1538 HETATM  1540   C19 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 17.347 19.773 10.176
+## 1539 HETATM  1541   C20 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.374 20.687  9.772
+## 1540 HETATM  1542   C21 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.447 21.440  6.373
+## 1541 HETATM  1543    O3 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 14.367 20.831  6.397
+## 1542 HETATM  1544    N4 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.583 20.913  5.924
+## 1543 HETATM  1545   C22 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.692 19.500  5.604
+## 1544 HETATM  1546   C23 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 18.067 18.945  5.936
+## 1545 HETATM  1547    O4 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 19.061 19.938  5.729
+## 1546 HETATM  1548   C24 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 18.226 17.726  5.057
+## 1547 HETATM  1549   C25 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 17.476 17.904  3.760
+## 1548 HETATM  1550   C26 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 17.500 17.363  2.496
+## 1549 HETATM  1551   C27 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.613 17.872  1.541
+## 1550 HETATM  1552   C28 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.722 18.906  1.865
+## 1551 HETATM  1553   C29 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 15.683 19.479  3.129
+## 1552 HETATM  1554   C30 &lt;NA&gt;   MK1     B   902   &lt;NA&gt; 16.504 19.061  4.128
+## 1553 HETATM  1555   C31 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  8.033 23.100  2.604
+## 1554 HETATM  1556   C32 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  6.666 23.739  2.876
+## 1555 HETATM  1557   C33 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  6.158 24.808  2.124
+## 1556 HETATM  1558    N5 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  4.911 25.430  2.300
+## 1557 HETATM  1559   C34 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  4.207 24.839  3.348
+## 1558 HETATM  1560   C35 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  4.654 23.774  4.136
+## 1559 HETATM  1561   C36 &lt;NA&gt;   MK1     B   902   &lt;NA&gt;  5.905 23.211  3.897
+##      o     b segid elesy charge
+## 1515 1 28.25  &lt;NA&gt;     N   &lt;NA&gt;
+## 1516 1 30.30  &lt;NA&gt;     C   &lt;NA&gt;
+## 1517 1 27.27  &lt;NA&gt;     C   &lt;NA&gt;
+## 1518 1 28.85  &lt;NA&gt;     C   &lt;NA&gt;
+## 1519 1 29.59  &lt;NA&gt;     O   &lt;NA&gt;
+## 1520 1 22.29  &lt;NA&gt;     N   &lt;NA&gt;
+## 1521 1 23.47  &lt;NA&gt;     C   &lt;NA&gt;
+## 1522 1 27.66  &lt;NA&gt;     C   &lt;NA&gt;
+## 1523 1 21.71  &lt;NA&gt;     C   &lt;NA&gt;
+## 1524 1 22.75  &lt;NA&gt;     C   &lt;NA&gt;
+## 1525 1 28.91  &lt;NA&gt;     N   &lt;NA&gt;
+## 1526 1 26.24  &lt;NA&gt;     C   &lt;NA&gt;
+## 1527 1 27.47  &lt;NA&gt;     C   &lt;NA&gt;
+## 1528 1 20.86  &lt;NA&gt;     C   &lt;NA&gt;
+## 1529 1 21.68  &lt;NA&gt;     C   &lt;NA&gt;
+## 1530 1 15.87  &lt;NA&gt;     O   &lt;NA&gt;
+## 1531 1 21.49  &lt;NA&gt;     C   &lt;NA&gt;
+## 1532 1 26.89  &lt;NA&gt;     C   &lt;NA&gt;
+## 1533 1 28.67  &lt;NA&gt;     C   &lt;NA&gt;
+## 1534 1 26.89  &lt;NA&gt;     C   &lt;NA&gt;
+## 1535 1 29.22  &lt;NA&gt;     C   &lt;NA&gt;
+## 1536 1 29.22  &lt;NA&gt;     C   &lt;NA&gt;
+## 1537 1 30.97  &lt;NA&gt;     C   &lt;NA&gt;
+## 1538 1 29.25  &lt;NA&gt;     C   &lt;NA&gt;
+## 1539 1 29.96  &lt;NA&gt;     C   &lt;NA&gt;
+## 1540 1 29.35  &lt;NA&gt;     C   &lt;NA&gt;
+## 1541 1 32.66  &lt;NA&gt;     O   &lt;NA&gt;
+## 1542 1 31.19  &lt;NA&gt;     N   &lt;NA&gt;
+## 1543 1 29.22  &lt;NA&gt;     C   &lt;NA&gt;
+## 1544 1 28.82  &lt;NA&gt;     C   &lt;NA&gt;
+## 1545 1 28.32  &lt;NA&gt;     O   &lt;NA&gt;
+## 1546 1 32.05  &lt;NA&gt;     C   &lt;NA&gt;
+## 1547 1 31.29  &lt;NA&gt;     C   &lt;NA&gt;
+## 1548 1 32.00  &lt;NA&gt;     C   &lt;NA&gt;
+## 1549 1 28.00  &lt;NA&gt;     C   &lt;NA&gt;
+## 1550 1 29.01  &lt;NA&gt;     C   &lt;NA&gt;
+## 1551 1 27.70  &lt;NA&gt;     C   &lt;NA&gt;
+## 1552 1 31.86  &lt;NA&gt;     C   &lt;NA&gt;
+## 1553 1 36.25  &lt;NA&gt;     C   &lt;NA&gt;
+## 1554 1 42.75  &lt;NA&gt;     C   &lt;NA&gt;
+## 1555 1 47.41  &lt;NA&gt;     C   &lt;NA&gt;
+## 1556 1 51.38  &lt;NA&gt;     N   &lt;NA&gt;
+## 1557 1 50.60  &lt;NA&gt;     C   &lt;NA&gt;
+## 1558 1 49.34  &lt;NA&gt;     C   &lt;NA&gt;
+## 1559 1 44.71  &lt;NA&gt;     C   &lt;NA&gt;</code></pre>
+<pre class="r"><code>pdb.protein &lt;- trim.pdb(pdb, inds=inds.protein)
+pdb.ligand &lt;- trim.pdb(pdb, inds=inds.ligand)
+pdb.ligand</code></pre>
+<pre><code>## 
+##  Call:  trim.pdb(pdb = pdb, inds = inds.ligand)
+## 
+##    Total Models#: 1
+##      Total Atoms#: 45,  XYZs#: 135  Chains#: 1  (values: B)
+## 
+##      Protein Atoms#: 0  (residues/Calpha atoms#: 0)
+##      Nucleic acid Atoms#: 0  (residues/phosphate atoms#: 0)
+## 
+##      Non-protein/nucleic Atoms#: 45  (residues: 1)
+##      Non-protein/nucleic resid values: [ MK1 (1) ]
+## 
+## + attr: atom, helix, sheet, seqres, xyz,
+##         calpha, call</code></pre>
+<pre class="r"><code>write.pdb(pdb.protein, file=&quot;1hsg_protein.pdb&quot;)
+write.pdb(pdb.ligand, file=&quot;1hsg_ligand.pdb&quot;)</code></pre>
+</div>
 
 
 

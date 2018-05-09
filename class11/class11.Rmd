@@ -25,3 +25,55 @@ names(percent) <- row.names(p)
 percent
 ```
 
+## Using Bio3D
+
+Load the bio3d package...
+
+```{r}
+library(bio3d)
+```
+
+Read in our HIV-Pr structure
+
+```{r}
+pdb <- read.pdb("1hsg")
+pdb
+```
+
+> **Q8.** Use the Bio3D   function to write out a protein only PDB file for viewing in VMD. Also write out a second separate PDB file for the ligand with residue name MK1
+
+```{r}
+inds.ligand <- atom.select(pdb, "ligand")
+inds.protein <- atom.select(pdb, "protein")
+inds.protein
+```
+
+Check we have what we want
+
+```{r}
+pdb$atom[inds.ligand$atom,]
+```
+
+
+```{r}
+pdb.protein <- trim.pdb(pdb, inds=inds.protein)
+pdb.ligand <- trim.pdb(pdb, inds=inds.ligand)
+pdb.ligand
+```
+
+```{r}
+write.pdb(pdb.protein, file="1hsg_protein.pdb")
+write.pdb(pdb.ligand, file="1hsg_ligand.pdb")
+
+```
+
+
+
+
+
+
+
+
+
+
+
