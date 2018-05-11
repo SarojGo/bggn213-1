@@ -2,8 +2,9 @@
 title: "Bioinformatics Class 11"
 author: "Barry Grant"
 date: "5/9/2018"
-output: 
-  html_document: 
+output:
+  word_document: default
+  html_document:
     keep_md: yes
 ---
 
@@ -104,6 +105,35 @@ hits <- plot(b)
 files <- get.pdb(hits$pdb.id, path = "pdbs", split = TRUE, gzip = TRUE)
 ```
 
+---
+
+```{r}
+pdbs <- pdbaln(files, fit=TRUE)
+pc <- pca(pdbs)
+plot(pc)
+```
+
+
+View the fitted PDB
+
+```{r, eval=FALSE}
+rgl.pdbs <- view(pdbs)
+rgl::rglwidget(elementId = "rgl.pdbs")
+```
+
+
+```{r}
+# Visualize first principal component
+p1 <- mktrj(pc, pc=1, file="pc_1-v2.pdb")
+```
+
+```{r, eval=FALSE}
+rgl.pc1 <- view(p1)
+rgl::rglwidget(elementId = "rgl.pc1")
+```
+
+---
+
 ```{r}
 # Align structures
 pdbs <- pdbaln(files)
@@ -141,7 +171,4 @@ pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
 
 # View witin R with bio3d
 
-```{r}
-
-```
 
