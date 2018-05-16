@@ -1,0 +1,82 @@
+---
+title: "Bioinformatics Class13"
+author: "Barry Grant"
+date: "5/16/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1000 Genome project data
+
+Read 1000 genome data for MXL dataset.
+
+```{r}
+genotype <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+```
+
+```{r}
+table(genotype[,2]) / nrow(genotype) * 100
+```
+
+## Base quality scores from fastqsanger
+
+```{r}
+library(seqinr)
+library(gtools)
+phred <- asc( s2c("DDDDCDEDCDDDDBBDDDCC@") ) - 33
+phred
+```
+
+
+
+## RNA-Seq result analysis
+
+Assessing genetic differences on a population scale. We want to find whether there is any association of the 4 asthma-associated SNPs (rs8067378...) on ORMDL3 expression.
+
+```{r}
+geno <- read.table("rs8067378_ENSG00000172057.6.txt")
+```
+
+```{r}
+summary(geno)
+```
+
+```{r}
+summary( geno$exp[geno$geno == "A/A"] )
+summary( geno$exp[geno$geno == "A/G"] )
+summary( geno$exp[geno$geno == "G/G"] )
+
+```
+ 
+## Let's make a boxplot
+
+```{r}
+boxplot(exp ~ geno , data=geno, notch=TRUE)
+```
+
+
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+
+ggplot(geno, aes(geno, exp)) + geom_boxplot()
+```
+
+And anoter plot
+```{r}
+## Histogram of the exp column with ggplot2
+ggplot(geno, aes(exp, fill = geno)) + geom_density(alpha = 0.2)
+```
+
+
+```{r}
+# Boxplot with the data shown
+ggplot(geno, aes(geno, exp, fill=geno)) + 
+  geom_boxplot(notch=TRUE, outlier.shape = NA) + 
+  geom_jitter(shape=16, position=position_jitter(0.2), alpha=0.4)
+```
+
+
