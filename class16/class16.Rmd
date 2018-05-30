@@ -1,0 +1,29 @@
+---
+title: "class16 Bioinformatics"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document created in TEXAS!
+
+```{r}
+shmlast_out <- read.csv("shmlast.csv")
+```
+
+```{r}
+head(shmlast_out)
+```
+
+
+and a plot to show I can
+
+```{r}
+hist(shmlast_out$E_scaled)
+```
+
+
