@@ -142,5 +142,4 @@ plot(meth$promoter.meth, meth$gene.meth, col=chcols, pch=15)
 ---
 title: "class5.R"
 author: "barry"
-date: "Fri May  4 10:26:53 2018"
 ---

@@ -1,7 +1,6 @@
 ---
 title: "map_colors_function"
 author: "Barry Grant"
-date: "4/20/2018"
 output: 
   html_document: 
     keep_md: yes

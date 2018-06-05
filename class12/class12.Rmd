@@ -136,6 +136,7 @@ pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
 ```
 
 ```{r}
-view(pc1)
+plot.pc <- view(pc1)
+rgl::rglwidget(elementId = "plot.pc")
 ```
 

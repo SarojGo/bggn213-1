@@ -1,7 +1,6 @@
 ---
 title: "Bioinformatics Class 15"
 author: "Barry Grant"
-date: "5/22/2018"
 output: 
   html_document: 
     keep_md: yes
