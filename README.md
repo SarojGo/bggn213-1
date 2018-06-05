@@ -14,13 +14,13 @@ The main class homepage is [here](https://bioboot.github.io/bggn213_S18/)
 
 - **Class09**: [Machine learning project](https://bioboot.github.io/bggn213/class09/class9.html)
 
-- Class10:  
+- Class10: Git, GitHub and class project  
 
 - Class11: Structural Bioinformatics    
 
 - Class12: Bioinformatics in drug discovery and design 
 
-- Class13: Genome informatics and high throughput sequencing (Part 1)  
+- Class13: Genome informatics and high throughput sequencing   
 
 - Class14: Transcriptomics and the analysis of RNA-Seq data 
 
