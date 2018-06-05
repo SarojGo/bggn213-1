@@ -14,6 +14,24 @@ The main class homepage is [here](https://bioboot.github.io/bggn213_S18/)
 
 - **Class09**: [Machine learning project](https://bioboot.github.io/bggn213/class09/class9.html)
 
+- Class10:  
+
+- Class11: Structural Bioinformatics    
+
+- Class12: Bioinformatics in drug discovery and design 
+
+- Class13: Genome informatics and high throughput sequencing (Part 1)  
+
+- Class14: Transcriptomics and the analysis of RNA-Seq data 
+
+- Class15: Genome annotation and the interpretation of gene lists    
+
+- Class16: Essential UNIX for bioinformatics 
+
+- Class17: Biological network analysis   
+
+- Class18: Cancer genomics 
+
 - Etc.
 
 > **Side-Note:** Fix for Rmd to md date: format is simply to rm these lines. First make sure you have "Pulled" your Repo down from GitHub and are in your updated GitHub tracked dir at the Terminal ;-)
