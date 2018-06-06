@@ -20,7 +20,7 @@ The main class homepage is [here](https://bioboot.github.io/bggn213_S18/)
 
 - Class12: Bioinformatics in drug discovery and design 
 
-- Class13: Genome informatics and high throughput sequencing   
+- Class13: [Genome informatics and high throughput sequencing](https://github.com/bioboot/bggn213/blob/master/class13/class13.md)   
 
 - Class14: Transcriptomics and the analysis of RNA-Seq data 
 
